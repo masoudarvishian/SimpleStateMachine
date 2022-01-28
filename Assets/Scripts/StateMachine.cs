@@ -1,19 +1,16 @@
 ﻿public class StateMachine
 {
-    private IState _currentState;
+    private IState _currentState = null;
 
     public void ChangeState(IState newState)
     {
-        if (_currentState != null)
-            _currentState.Exit();
-
+        _currentState?.Exit();
         _currentState = newState;
         _currentState.Enter();
     }
 
     public void Execute()
     {
-        if (_currentState != null)
-            _currentState.Execute();
+        _currentState?.Execute();
     }
 }
